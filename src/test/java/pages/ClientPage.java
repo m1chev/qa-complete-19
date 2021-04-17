@@ -1,5 +1,6 @@
 package pages;
 
+import enums.SearchField;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -83,5 +84,28 @@ public class ClientPage {
     public String getTableText() {
         return driver
                 .findElement(By.id("fakturi_table")).getText();
+    }
+
+    public void enterSearchMenu() {
+        System.out.println("Opening Search menu");
+        driver.findElement(By.id("searchbtn")).click();
+    }
+
+    public void enterSearchText(String textToSearch, SearchField field) {
+        System.out.println("Enter search text");
+        driver.findElement(By.xpath(field.getSelector())).sendKeys(textToSearch);
+    }
+
+    public void pressSearchButton() {
+        System.out.println("Click search button");
+        driver.findElement(By.name("s")).click();
+    }
+
+    public String getSearchResult() {
+        return driver.findElement(By.cssSelector("a.faktura_id")).getText();
+    }
+
+    public String getSearchMessage() {
+        return driver.findElement(By.id("emptylist")).getText().trim();
     }
 }

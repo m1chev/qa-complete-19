@@ -24,7 +24,10 @@ public class ClientAPI {
         RestAssured.authentication = RestAssured.preemptive().basic(Defaults.EMAIL, Defaults.PASSWORD);
     }
 
-
+    /**
+     * Retrieves all Clients
+     * @return The response body
+     */
     public static Response getAll(){
         Response response = RestAssured.given()
                 .log().all()
@@ -35,6 +38,11 @@ public class ClientAPI {
         return response;
     }
 
+    /**
+     * Deletes single Client by ID
+     * @param id The ID of the Client to be deleted
+     * @return The response body
+     */
     public static Response delete(String id){
         Response response = RestAssured.given()
                 .log().all()
@@ -45,6 +53,11 @@ public class ClientAPI {
         return response;
     }
 
+    /**
+     * Creates Client
+     * @param client The client to be created
+     * @return The response body
+     */
     public static Response create(Client client){
         Response response = RestAssured.given()
                 .log().all()
@@ -56,6 +69,9 @@ public class ClientAPI {
         return response;
     }
 
+    /**
+     * Deletes all Clients
+     */
     public static void deleteAll(){
         //Get all clients
         Response getAllResponse = getAll();
